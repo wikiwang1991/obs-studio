@@ -979,6 +979,7 @@ bool OBSApp::OBSInit()
 				});
 		obs_hotkey_enable_background_press(
 				applicationState() != Qt::ApplicationActive);
+
 		return true;
 	} else {
 		return false;

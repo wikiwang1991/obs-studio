@@ -1565,7 +1565,7 @@ void OBSBasic::OBSInit()
 
 #ifdef _WIN32
 	SetWin32DropStyle(this);
-	show();
+	//show();
 #endif
 
 	bool alwaysOnTop = config_get_bool(App()->GlobalConfig(), "BasicWindow",
@@ -6013,49 +6013,49 @@ void OBSBasic::SystemTrayInit()
 			this);
 	trayIcon->setToolTip("OBS Studio");
 
-	showHide = new QAction(QTStr("Basic.SystemTray.Show"),
-			trayIcon);
-	sysTrayStream = new QAction(QTStr("Basic.Main.StartStreaming"),
-			trayIcon);
-	sysTrayRecord = new QAction(QTStr("Basic.Main.StartRecording"),
-			trayIcon);
-	sysTrayReplayBuffer = new QAction(QTStr("Basic.Main.StartReplayBuffer"),
-			trayIcon);
+	//showHide = new QAction(QTStr("Basic.SystemTray.Show"),
+	//		trayIcon);
+	//sysTrayStream = new QAction(QTStr("Basic.Main.StartStreaming"),
+	//		trayIcon);
+	//sysTrayRecord = new QAction(QTStr("Basic.Main.StartRecording"),
+	//		trayIcon);
+	//sysTrayReplayBuffer = new QAction(QTStr("Basic.Main.StartReplayBuffer"),
+	//		trayIcon);
 	exit = new QAction(QTStr("Exit"),
 			trayIcon);
 
-	if (outputHandler && !outputHandler->replayBuffer)
-		sysTrayReplayBuffer->setEnabled(false);
+	//if (outputHandler && !outputHandler->replayBuffer)
+	//	sysTrayReplayBuffer->setEnabled(false);
 
-	connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
-			this,
-			SLOT(IconActivated(QSystemTrayIcon::ActivationReason)));
-	connect(showHide, SIGNAL(triggered()),
-			this, SLOT(ToggleShowHide()));
-	connect(sysTrayStream, SIGNAL(triggered()),
-			this, SLOT(on_streamButton_clicked()));
-	connect(sysTrayRecord, SIGNAL(triggered()),
-			this, SLOT(on_recordButton_clicked()));
-	connect(sysTrayReplayBuffer.data(), &QAction::triggered,
-			this, &OBSBasic::ReplayBufferClicked);
+	//connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
+	//		this,
+	//		SLOT(IconActivated(QSystemTrayIcon::ActivationReason)));
+	//connect(showHide, SIGNAL(triggered()),
+	//		this, SLOT(ToggleShowHide()));
+	//connect(sysTrayStream, SIGNAL(triggered()),
+//			this, SLOT(on_streamButton_clicked()));
+	//connect(sysTrayRecord, SIGNAL(triggered()),
+	//		this, SLOT(on_recordButton_clicked()));
+	//connect(sysTrayReplayBuffer.data(), &QAction::triggered,
+	//		this, &OBSBasic::ReplayBufferClicked);
 	connect(exit, SIGNAL(triggered()),
 			this, SLOT(close()));
 
-	QMenu *previewProjector = new QMenu(QTStr("PreviewProjector"));
-	AddProjectorMenuMonitors(previewProjector, this,
-			SLOT(OpenPreviewProjector()));
-	QMenu *studioProgramProjector = new QMenu(
-			QTStr("StudioProgramProjector"));
-	AddProjectorMenuMonitors(studioProgramProjector, this,
-			SLOT(OpenStudioProgramProjector()));
+	//QMenu *previewProjector = new QMenu(QTStr("PreviewProjector"));
+	//AddProjectorMenuMonitors(previewProjector, this,
+	//		SLOT(OpenPreviewProjector()));
+	//QMenu *studioProgramProjector = new QMenu(
+	//		QTStr("StudioProgramProjector"));
+	//AddProjectorMenuMonitors(studioProgramProjector, this,
+	//		SLOT(OpenStudioProgramProjector()));
 
 	trayMenu = new QMenu;
-	trayMenu->addAction(showHide);
-	trayMenu->addMenu(previewProjector);
-	trayMenu->addMenu(studioProgramProjector);
-	trayMenu->addAction(sysTrayStream);
-	trayMenu->addAction(sysTrayRecord);
-	trayMenu->addAction(sysTrayReplayBuffer);
+	//trayMenu->addAction(showHide);
+	//trayMenu->addMenu(previewProjector);
+	//trayMenu->addMenu(studioProgramProjector);
+	//trayMenu->addAction(sysTrayStream);
+	//trayMenu->addAction(sysTrayRecord);
+	//trayMenu->addAction(sysTrayReplayBuffer);
 	trayMenu->addAction(exit);
 	trayIcon->setContextMenu(trayMenu);
 }
@@ -6108,10 +6108,10 @@ void OBSBasic::SystemTray(bool firstStarted)
 		trayIcon->hide();
 	}
 
-	if (isVisible())
-		showHide->setText(QTStr("Basic.SystemTray.Hide"));
-	else
-		showHide->setText(QTStr("Basic.SystemTray.Show"));
+	//if (isVisible())
+	//	showHide->setText(QTStr("Basic.SystemTray.Hide"));
+	//else
+	//	showHide->setText(QTStr("Basic.SystemTray.Show"));
 }
 
 bool OBSBasic::sysTrayMinimizeToTray()
