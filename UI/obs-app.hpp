@@ -33,6 +33,8 @@
 
 #include "window-main.hpp"
 
+class Interface;
+
 std::string CurrentTimeString();
 std::string CurrentDateTimeString();
 std::string GenerateTimeDateFilename(const char *extension, bool noSpace=false);
@@ -75,6 +77,8 @@ private:
 
 	std::deque<obs_frontend_translate_ui_cb> translatorHooks;
 
+	QPointer<Interface>            server;
+	
 	bool InitGlobalConfig();
 	bool InitGlobalConfigDefaults();
 	bool InitLocale();

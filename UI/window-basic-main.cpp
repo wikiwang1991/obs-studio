@@ -1565,7 +1565,7 @@ void OBSBasic::OBSInit()
 
 #ifdef _WIN32
 	SetWin32DropStyle(this);
-	//show();
+	show();
 #endif
 
 	bool alwaysOnTop = config_get_bool(App()->GlobalConfig(), "BasicWindow",

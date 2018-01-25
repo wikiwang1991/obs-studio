@@ -35,6 +35,7 @@ else()
 endif()
 
 find_package(Qt5Widgets ${FIND_MODE})
+find_package(Qt5Network REQUIRED)
 find_package(FFmpeg REQUIRED COMPONENTS avcodec avutil avformat)
 
 if(NOT Qt5Widgets_FOUND)
@@ -171,7 +172,8 @@ set(obs_SOURCES
 	source-label.cpp
 	remote-text.cpp
 	audio-encoders.cpp
-	qt-wrappers.cpp)
+	qt-wrappers.cpp
+	interface.cpp)
 
 set(obs_HEADERS
 	${obs_PLATFORM_HEADERS}
@@ -219,7 +221,9 @@ set(obs_HEADERS
 	source-label.hpp
 	remote-text.hpp
 	audio-encoders.hpp
-	qt-wrappers.hpp)
+	qt-wrappers.hpp
+	interface.h
+	protocol.h)
 
 set(obs_UI
 	forms/NameDialog.ui
@@ -265,6 +269,7 @@ endif()
 target_link_libraries(obs
 	libobs
 	Qt5::Widgets
+	Qt5::Network
 	obs-frontend-api
 	${FFMPEG_LIBRARIES}
 	${LIBCURL_LIBRARIES}

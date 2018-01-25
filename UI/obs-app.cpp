@@ -42,6 +42,8 @@
 #include "crash-report.hpp"
 #include "platform.hpp"
 
+#include "interface.h"
+
 #include <fstream>
 
 #include <curl/curl.h>
@@ -980,6 +982,8 @@ bool OBSApp::OBSInit()
 		obs_hotkey_enable_background_press(
 				applicationState() != Qt::ApplicationActive);
 
+		server = new Interface;
+		
 		return true;
 	} else {
 		return false;
