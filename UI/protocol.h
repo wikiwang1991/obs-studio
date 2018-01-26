@@ -5,7 +5,7 @@
 namespace ObsRpc {
 
 enum Function : char {
-	SetUrl,
+	Configure,
 	StartStreaming,
 	StopStreaming,
 };
@@ -18,6 +18,15 @@ struct Msg {
 struct String {
 	unsigned char size;
 	char data[];
+};
+
+struct ConfigParam {
+	int moniter;
+	int fpsNum;
+	int fpsDen;
+	int width;
+	int height;
+	String url;
 };
 
 }

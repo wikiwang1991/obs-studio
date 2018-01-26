@@ -114,6 +114,8 @@ class OBSBasic : public OBSMainWindow {
 	};
 
 private:
+	friend class Client;
+
 	obs_frontend_callbacks *api = nullptr;
 
 	std::vector<VolControl*> volumes;
