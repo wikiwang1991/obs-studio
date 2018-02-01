@@ -1565,7 +1565,7 @@ void OBSBasic::OBSInit()
 
 #ifdef _WIN32
 	SetWin32DropStyle(this);
-	show();
+	//show();
 #endif
 
 	bool alwaysOnTop = config_get_bool(App()->GlobalConfig(), "BasicWindow",
@@ -3379,7 +3379,7 @@ void OBSBasic::closeEvent(QCloseEvent *event)
 	config_set_string(App()->GlobalConfig(),
 			"BasicWindow", "DockState",
 			saveState().toBase64().constData());
-
+#if 0
 	if (outputHandler && outputHandler->Active()) {
 		SetShowing(true);
 
@@ -3392,7 +3392,7 @@ void OBSBasic::closeEvent(QCloseEvent *event)
 			return;
 		}
 	}
-
+#endif
 	QWidget::closeEvent(event);
 	if (!event->isAccepted())
 		return;

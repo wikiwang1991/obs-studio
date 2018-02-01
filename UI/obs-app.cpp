@@ -429,6 +429,10 @@ bool OBSApp::InitGlobalConfigDefaults()
 	config_set_default_bool(globalConfig, "Video", "ResetOSXVSyncOnExit",
 			true);
 #endif
+
+	config_set_default_uint(globalConfig, "Interface",
+			"port", 59151);
+
 	return true;
 }
 

@@ -35,15 +35,17 @@ private:
 Interface::Interface()
 {
 	main = static_cast<OBSBasic *>(App()->GetMainWindow());
-//	listen();
-	listen(QHostAddress::Any, 666);
+
+	config_t *config = App()->GlobalConfig();
+	quint16 port = config_get_uint(config, "Interface", "port");
+	listen(QHostAddress::Any, port);
 }
 
 void Interface::incomingConnection(qintptr socketDescriptor)
 {
 	QTcpSocket *socket = new Client;
-	connect(socket, SIGNAL(disconnected()), SLOT(deleteLater()));
 	socket->setSocketDescriptor(socketDescriptor);
+	connect(socket, SIGNAL(disconnected()), socket, SLOT(deleteLater()));
 }
 
 Client::Client()
@@ -82,7 +84,7 @@ void Client::read()
 				if (!(width && height)) {
 					const char *name = obs_property_list_item_name(property, config->moniter);
 
-					char display[8];
+					char display[16];
 					int idx = -1, cx, cy, x, y;
 					sscanf(name, "%s %d: %ldx%ld @ %ld,%ld", display, &idx, &cx, &cy, &x, &y);
 					assert(idx == config->moniter);
@@ -144,7 +146,7 @@ void Client::read()
 			main->StopStreaming();
 			buf.remove(0, sizeof(Msg));
 			break;
-		default: disconnect(); return;
+		default: disconnectFromHost(); return;
 		}
 	}
 }

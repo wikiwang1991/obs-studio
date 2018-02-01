@@ -5,7 +5,7 @@
 class Interface : public QTcpServer {
 public:
 	Interface();
-	
+
 private:
 	void incomingConnection(qintptr socketDescriptor) override;
 };
